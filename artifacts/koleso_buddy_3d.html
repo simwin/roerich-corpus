@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«Колесо Будды» — трёхмерная реконструкция по § 431 «Знаков Агни Йоги»</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Spectral:wght@300;400;600&family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBF8F1;--paper-2:#F3EEE3;--ink:#2B2820;--ink-soft:#5C574A;
+  --rule:#DCD3C1;--rule-soft:#E8E1D3;--psy:#B07A1E;--rus:#B05B38;--idea:#6E5FA8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Spectral,Georgia,serif;
+  font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:44px 24px 72px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,38px);
+  line-height:1.14;letter-spacing:-.015em;margin:10px 0 0}
+.eyebrow{font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-soft)}
+.lede{color:var(--ink-soft);margin:16px 0 0;max-width:66ch}
+#stage{position:relative;height:min(62vh,520px);margin-top:26px;border:1px solid var(--rule-soft);
+  border-radius:14px;background:var(--paper-2)}
+#cv{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+#cv.dg{cursor:grabbing}
+#fb{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:26px;
+  color:var(--ink-soft);font-size:15px}
+.ctl{display:flex;gap:18px;align-items:center;margin-top:14px;font-size:13.5px;
+  color:var(--ink-soft);flex-wrap:wrap}
+.ctl label{display:flex;gap:6px;align-items:center;cursor:pointer;user-select:none}
+.btn{font-family:Archivo,sans-serif;font-size:13px;border:1px solid var(--rule);background:var(--paper);
+  color:var(--ink);border-radius:18px;padding:6px 14px;cursor:pointer}
+.btn:focus-visible,input:focus-visible{outline:2px solid var(--idea);outline-offset:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.box{border:1px solid var(--rule-soft);border-radius:12px;padding:18px 20px;font-size:14.5px;
+  color:var(--ink-soft)}
+.box.src{border-color:var(--psy)}
+.box b{display:block;font-family:Archivo,sans-serif;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:9px}
+.box.src b{color:var(--psy)}
+@media(max-width:780px){.two{grid-template-columns:1fr}}
+.quote{margin-top:26px;padding:18px 22px;border-left:3px solid var(--psy);background:var(--paper-2);
+  border-radius:0 10px 10px 0;font-size:16px}
+.quote cite{display:block;margin-top:10px;font-style:normal;font-family:Archivo,sans-serif;
+  font-size:11.5px;letter-spacing:.04em;color:var(--ink-soft)}
+footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--rule);font-size:13.5px;
+  color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Реконструкция · «Знаки Агни Йоги», кн. 4, § 431</div>
+  <h1>«Колесо Будды»</h1>
+  <p class="lede">Единственное место в Живой Этике, где терафим описан геометрически:
+    назван «сущностью терафима дальних миров». Состав фигуры взят из § 431, взаимное
+    расположение частей — из письма Е. И. Рерих (т. 6, стр. 349), где она сама
+    комментирует этот параграф. Модель поворачивается мышью.</p>
+
+  <div id="stage">
+    <canvas id="cv"></canvas>
+    <div id="fb">Не удалось загрузить библиотеку трёхмерной графики.<br>
+      Состав фигуры описан ниже.</div>
+  </div>
+  <div class="ctl">
+    <label><input type="checkbox" id="cs" checked> вращение в плоскости колеса</label>
+    <label><input type="checkbox" id="cv3"> придать знаку объём</label>
+    <button class="btn" id="bt">вид с полюса</button>
+    <button class="btn" id="bz">исходный вид</button>
+  </div>
+
+  <div class="two">
+    <div class="box src"><b>Задано источником</b>
+      Стержень-«пестик» как основа. Сферы полярности на его концах — «соответственно
+      двум основным законам». Колесо психической энергии в середине. Свастика —
+      в середине колеса и <strong>поперёк стержня</strong>, вращающаяся. Круг вращения
+      радуги как «все стадии пространственного огня». Фохатические искры окружают знак
+      и копятся в полярных утолщениях стержня и в самой окружности.</div>
+    <div class="box"><b>Реконструкция — в тексте этого нет</b>
+      Вертикальность оси: ориентация не задана. Все пропорции и размеры. Направление
+      вращения. Рука знака. Число и поведение искр. Цвета. Толщина: в тексте это
+      «начертание», то есть фигура плоская, — поэтому по умолчанию знак здесь
+      без объёма.</div>
+  </div>
+
+  <div class="quote">Познание этой фигуры названо ступенью к овладению огнём: представляя
+    себе начертание, можно вызвать приближение огня, обращая опасное свойство его
+    в целебное качество.
+    <cite>§ 431 — пересказ</cite></div>
+
+  <footer>Замечание о знаке: свастика здесь — древний индийский и буддийский символ
+    благоденствия, в значении, в котором он употреблялся в 1929 году. Приведена
+    традиционная прямая форма, не повёрнутая на 45°.</footer>
+</div>
+
+<script>
+(function(){
+  function boot(){ if(window.THREE) init(); else document.getElementById('fb').style.display='grid'; }
+  var s=document.createElement('script'); s.src='three.min.js';
+  s.onload=boot;
+  s.onerror=function(){
+    var c=document.createElement('script');
+    c.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    c.onload=boot; c.onerror=boot; document.head.appendChild(c);
+  };
+  document.head.appendChild(s);
+
+function init(){
+var cv=document.getElementById('cv'),stage=document.getElementById('stage');
+var scene=new THREE.Scene();
+var cam=new THREE.PerspectiveCamera(38,1,.1,100); cam.position.set(0,1.3,5.6); cam.lookAt(0,0,0);
+var rend=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+rend.setPixelRatio(Math.min(window.devicePixelRatio,2));
+scene.add(new THREE.HemisphereLight(0xffffff,0x554433,.9));
+var d1=new THREE.DirectionalLight(0xffffff,.7); d1.position.set(3,5,4); scene.add(d1);
+var d2=new THREE.DirectionalLight(0xffd9a0,.4); d2.position.set(-4,-3,-3); scene.add(d2);
+var root=new THREE.Group(); scene.add(root);
+var mRod=new THREE.MeshStandardMaterial({color:0x8f8c83,roughness:.55,metalness:.25});
+var mTop=new THREE.MeshStandardMaterial({color:0xFAC775,roughness:.4,metalness:.2});
+var mBot=new THREE.MeshStandardMaterial({color:0x854F0B,roughness:.5,metalness:.2});
+var mWhl=new THREE.MeshStandardMaterial({color:0xBA7517,roughness:.5,metalness:.2});
+var mSwa=new THREE.MeshStandardMaterial({color:0xD85A30,roughness:.5,metalness:.1,side:THREE.DoubleSide});
+root.add(new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,3.4,24),mRod));
+var a1=new THREE.Mesh(new THREE.SphereGeometry(.3,32,24),mTop); a1.position.y=1.7; root.add(a1);
+var a2=new THREE.Mesh(new THREE.SphereGeometry(.3,32,24),mBot); a2.position.y=-1.7; root.add(a2);
+var spin=new THREE.Group(); root.add(spin);
+var plane=new THREE.Group(); plane.rotation.x=-Math.PI/2; spin.add(plane);
+plane.add(new THREE.Mesh(new THREE.TorusGeometry(1,.03,12,120),mWhl));
+var sw=new THREE.Group(),t=.13,B=.45,A=.7,HR=.11,HT=.05,OUT=HR+HT,len=A-OUT;
+sw.add(new THREE.Mesh(new THREE.TorusGeometry(HR,HT,10,28),mSwa));
+function bar(w,h,x,y){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,t),mSwa);m.position.set(x,y,0);sw.add(m);}
+bar(t,len,0,OUT+len/2); bar(t,len,0,-(OUT+len/2));
+bar(len,t,OUT+len/2,0); bar(len,t,-(OUT+len/2),0);
+bar(B,t,B/2,A); bar(t,B,A,-B/2); bar(B,t,-B/2,-A); bar(t,B,-A,B/2);
+sw.scale.z=.09; plane.add(sw);
+var RR=1.34, rg=new THREE.TorusGeometry(RR,.02,10,200), cols=[], pos=rg.attributes.position, cc=new THREE.Color();
+for(var q=0;q<pos.count;q++){var aq=Math.atan2(pos.getY(q),pos.getX(q));
+  cc.setHSL((aq+Math.PI)/(2*Math.PI),.7,.55); cols.push(cc.r,cc.g,cc.b);}
+rg.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+var ring=new THREE.Mesh(rg,new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,
+  opacity:.95,depthWrite:false}));
+ring.rotation.x=-Math.PI/2; root.add(ring);
+var N=620,pgm=new THREE.BufferGeometry(),pp=new Float32Array(N*3),pc=new Float32Array(N*3);
+var ang=[],rad=[],hgt=[],spd=[],phs=[];
+for(var j=0;j<N;j++){ang.push(Math.random()*6.283); rad.push((Math.random()-.5)*.17);
+  hgt.push((Math.random()-.5)*.17); spd.push(.0016+Math.random()*.007); phs.push(Math.random()*6.283);}
+pgm.setAttribute('position',new THREE.BufferAttribute(pp,3));
+pgm.setAttribute('color',new THREE.BufferAttribute(pc,3));
+root.add(new THREE.Points(pgm,new THREE.PointsMaterial({size:.05,sizeAttenuation:true,
+  vertexColors:true,transparent:true,opacity:.85,depthWrite:false})));
+var sg=new THREE.BufferGeometry(),pts=[];
+for(var k=0;k<80;k++){var sy=k%2?1.62:-1.62,ph=Math.random()*6.283,rd=Math.random()*.42;
+  pts.push(Math.cos(ph)*rd, sy+(Math.random()-.5)*.34, Math.sin(ph)*rd);}
+var base=pts.slice();
+sg.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));
+var sparks=new THREE.Points(sg,new THREE.PointsMaterial({color:0xF7C463,size:.055,
+  sizeAttenuation:true,transparent:true,opacity:.95}));
+root.add(sparks);
+root.rotation.x=-.28; root.rotation.y=.5;
+var cs=document.getElementById('cs'), c3=document.getElementById('cv3');
+c3.onchange=function(){sw.scale.z=c3.checked?1:.09};
+document.getElementById('bz').onclick=function(){root.rotation.set(-.28,.5,0)};
+document.getElementById('bt').onclick=function(){root.rotation.set(1.25,.5,0)};
+var down=false,px=0,py=0;
+cv.addEventListener('pointerdown',function(e){down=true;px=e.clientX;py=e.clientY;
+  cv.classList.add('dg'); cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',function(e){if(!down)return;
+  root.rotation.y+=(e.clientX-px)*.008; root.rotation.x+=(e.clientY-py)*.008;
+  root.rotation.x=Math.max(-1.5,Math.min(1.5,root.rotation.x)); px=e.clientX; py=e.clientY});
+function up(){down=false; cv.classList.remove('dg')}
+cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+function size(){var w=stage.clientWidth||760,h=stage.clientHeight||440;
+  rend.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix()}
+size(); window.addEventListener('resize',size);
+if(window.ResizeObserver) new ResizeObserver(size).observe(stage);
+var cl=0,fr=0,tc=new THREE.Color();
+function loop(){requestAnimationFrame(loop);
+  cl+=.012; fr++;
+  if(cs.checked) spin.rotation.y+=.009;
+  for(var m=0;m<N;m++){ang[m]+=spd[m];
+    var rr=RR+rad[m]+Math.sin(cl*2.1+phs[m])*.045, aa=ang[m];
+    pp[m*3]=Math.cos(aa)*rr; pp[m*3+1]=hgt[m]+Math.cos(cl*1.7+phs[m]*1.3)*.05;
+    pp[m*3+2]=Math.sin(aa)*rr;
+    if(fr%3===0){tc.setHSL(((aa%6.283)+6.283)%6.283/6.283,.85,.58+.1*Math.sin(cl*3+phs[m]));
+      pc[m*3]=tc.r; pc[m*3+1]=tc.g; pc[m*3+2]=tc.b;}}
+  pgm.attributes.position.needsUpdate=true;
+  if(fr%3===0) pgm.attributes.color.needsUpdate=true;
+  var p=sg.attributes.position;
+  for(var n=0;n<p.count;n++) p.setY(n, base[n*3+1]+Math.sin(cl*1.6+n*.7)*.035);
+  p.needsUpdate=true;
+  rend.render(scene,cam);
+}
+loop();
+}
+})();
+</script>
+</body>
+</html>

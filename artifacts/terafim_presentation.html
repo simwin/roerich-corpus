@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Терафим: доктрина Учения и её структурное эхо</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF8F1; --paper-2:#F3EEE3; --ink:#2B2820; --ink-soft:#5C574A;
+  --rule:#DCD3C1; --rule-soft:#E8E1D3;
+  --idea:#6E5FA8; --tech:#2E7D67; --rus:#B05B38; --psy:#B07A1E; --cim:#4E7A33;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);
+  font-family:Spectral,Georgia,serif;font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.12;margin:0}
+.mono{font-family:Archivo,system-ui,sans-serif}
+
+#deck{position:relative;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;padding:56px 64px 92px;overflow-y:auto}
+.slide.on{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+.inner{max-width:1000px;margin:0 auto}
+
+.eyebrow{font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+h2{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.015em;margin-bottom:8px}
+.sub{color:var(--ink-soft);font-size:17px;max-width:70ch;margin-top:14px;line-height:1.62}
+p{line-height:1.66}
+
+/* титул */
+.title-slide{display:none;place-content:center}
+.title-slide.on{display:grid}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.025em}
+h1 em{font-style:italic;font-weight:400}
+.title-slide .meta{margin-top:34px;font-family:Archivo,sans-serif;font-size:13px;
+  color:var(--ink-soft);display:flex;gap:24px;flex-wrap:wrap}
+
+/* карточки */
+.cards{display:grid;gap:16px;margin-top:26px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--paper-2);border:1px solid var(--rule-soft);border-radius:12px;padding:20px 22px}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{margin:0;font-size:15.5px;color:var(--ink-soft)}
+.card .n{font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--rus);display:block;margin-bottom:9px}
+@media(max-width:860px){.c2,.c3{grid-template-columns:1fr}}
+
+ul.big{margin:24px 0 0;padding:0;list-style:none}
+ul.big li{padding:13px 0 13px 34px;border-bottom:1px solid var(--rule-soft);position:relative;
+  font-size:17px;line-height:1.55}
+ul.big li:before{content:"";position:absolute;left:8px;top:22px;width:7px;height:7px;
+  border-radius:50%;background:var(--rus)}
+ul.big li b{font-weight:600}
+ul.big li span{color:var(--ink-soft)}
+
+.quote{margin:26px 0 0;padding:18px 24px;border-left:3px solid var(--psy);
+  background:var(--paper-2);border-radius:0 10px 10px 0;font-size:17px;line-height:1.6}
+.quote cite{display:block;margin-top:10px;font-style:normal;font-family:Archivo,sans-serif;
+  font-size:12px;letter-spacing:.04em;color:var(--ink-soft)}
+
+table{width:100%;border-collapse:collapse;margin-top:24px;font-size:16px}
+th{font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-soft);text-align:left;padding:10px 14px;
+  background:var(--paper-2)}
+td{padding:11px 14px;border-top:1px solid var(--rule-soft);vertical-align:top}
+td.ar{text-align:center;color:var(--rus);width:38px}
+td.d{color:var(--ink-soft)}
+
+/* линия времени */
+.tline{margin-top:26px;display:grid;gap:0}
+.tline .row{display:grid;grid-template-columns:104px 1fr;gap:18px;padding:12px 0;
+  border-bottom:1px solid var(--rule-soft)}
+.tline .yr{font-family:Archivo,sans-serif;font-weight:600;font-size:13.5px;color:var(--rus)}
+.tline .tx{font-size:16px;line-height:1.5}
+.tline .tx span{color:var(--ink-soft)}
+
+/* 3D */
+#stage{position:relative;height:min(52vh,430px);margin-top:18px;
+  border:1px solid var(--rule-soft);border-radius:12px;background:var(--paper-2)}
+#cv3{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+#cv3.dg{cursor:grabbing}
+#fallback{position:absolute;inset:0;display:none;place-items:center;text-align:center;
+  padding:24px;color:var(--ink-soft);font-size:15px}
+.ctl{display:flex;gap:16px;align-items:center;margin-top:12px;font-size:13px;
+  color:var(--ink-soft);flex-wrap:wrap}
+.ctl label{display:flex;gap:6px;align-items:center;cursor:pointer;user-select:none}
+.prov{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;font-size:13.5px}
+.prov div{padding:12px 15px;border:1px solid var(--rule-soft);border-radius:10px;color:var(--ink-soft)}
+.prov div:first-child{border-color:var(--psy)}
+.prov b{color:var(--ink);font-weight:600;display:block;margin-bottom:5px;
+  font-family:Archivo,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:860px){.prov{grid-template-columns:1fr}}
+
+/* шкала */
+.scale{margin-top:26px}
+.track{height:8px;border-radius:4px;background:linear-gradient(90deg,#2E7D67,#B07A1E,#B05B38)}
+.marks{display:flex;justify-content:space-between;margin-top:10px;font-family:Archivo,sans-serif;
+  font-size:11.5px;color:var(--ink-soft)}
+.scols{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px;font-size:14.5px}
+.scols div{padding:14px 16px;border:1px solid var(--rule-soft);border-radius:10px;background:var(--paper-2)}
+.scols b{display:block;font-family:Archivo,sans-serif;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--rus);margin-bottom:7px}
+.scols p{margin:0;color:var(--ink-soft);font-size:14px}
+@media(max-width:980px){.scols{grid-template-columns:1fr 1fr}}
+
+/* навигация */
+#nav{position:fixed;bottom:0;left:0;right:0;height:64px;display:flex;align-items:center;
+  justify-content:space-between;padding:0 28px;background:linear-gradient(transparent,var(--paper) 46%)}
+#dots{display:flex;gap:7px}
+#dots button{width:8px;height:8px;padding:0;border-radius:50%;border:none;cursor:pointer;
+  background:var(--rule);transition:background .16s,transform .16s}
+#dots button.on{background:var(--rus);transform:scale(1.35)}
+#dots button:focus-visible,.nb:focus-visible{outline:2px solid var(--idea);outline-offset:3px}
+.nb{font-family:Archivo,sans-serif;font-size:13px;border:1px solid var(--rule);
+  background:var(--paper);color:var(--ink);border-radius:20px;padding:7px 16px;cursor:pointer}
+.nb[disabled]{opacity:.35;cursor:default}
+#count{font-family:Archivo,sans-serif;font-size:12px;color:var(--ink-soft);min-width:52px;text-align:center}
+.navgrp{display:flex;gap:10px;align-items:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div id="deck">
+
+<!-- 1 -->
+<section class="slide title-slide on">
+  <div class="inner">
+    <div class="eyebrow">Материалы к обсуждению</div>
+    <h1>Терафим<br><em>доктрина Учения — и её структурное эхо<br>шестьдесят лет спустя</em></h1>
+    <p class="sub">Сплошной поиск по корпусу русских переводов: Блаватская, Письма Махатм,
+      четырнадцать книг Живой Этики, Письма Е. И. Рерих издания МЦР, «Грани Агни Йоги»
+      Б. Н. Абрамова. 6,93 млн слов, 172 вхождения слова «терафим».</p>
+    <div class="meta"><span>Июль 2026</span><span>Стрелки ← → для перехода</span></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Постановка</div>
+    <h2>Два наблюдения, которые стоит свести</h2>
+    <div class="cards c2">
+      <div class="card"><span class="n">Первое</span>
+        <h3>Терафим — развёрнутая доктрина, а не упоминание</h3>
+        <p>Понятие присутствует с первой книги Живой Этики (1922) и живёт до последних
+        записей Абрамова (1972). В «Знаках Агни Йоги» ему отведены семь параграфов подряд,
+        включая пошаговый регламент изготовления. Среди названных применений —
+        <b>охрана здоровья человека</b>.</p></div>
+      <div class="card"><span class="n">Второе</span>
+        <h3>Спустя шестьдесят лет — метод с той же конструкцией</h3>
+        <p>«Вибрационный ряд» Л. Г. Пучко («Многомерная медицина», 1990-е) устроен
+        поэлементно так же: геометрическая фигура, фотография человека, заряжание
+        оператором, лечебное назначение. При этом автор <b>не ссылается на Рерихов
+        ни одним словом</b>.</p></div>
+    </div>
+    <div class="quote" style="border-color:var(--idea)">Предмет разговора — <b>история
+      представлений</b>: что говорят тексты, откуда пришли понятия, как они менялись
+      за девяносто пять лет. Вопрос о действенности здесь не ставится — это другая
+      дисциплина с другим типом доказательства.</div>
+    <p class="sub">Дальше — что именно говорят тексты, в чём совпадение, и почему из него
+      <em>не</em> следует заимствование.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Определение · «Знаки Агни Йоги», кн. 4, § 419</div>
+    <h2>Что такое терафим</h2>
+    <ul class="big">
+      <li><b>Два рода.</b> <span>Астральный — назван кристаллом психической энергии,
+        доступен лишь очень развитым. Материальный — продукт материального устремления,
+        доступен каждому сознательному духу.</span></li>
+      <li><b>Модель явления.</b> <span>Терафим определён как «модель самого явления» —
+        подобно тому, как модель корабля служит мореходу. Глядя на изображение, человек
+        как бы соприкасается с отсутствующим.</span></li>
+      <li><b>Главный акт — при построении.</b> <span>Именно тогда психическая энергия
+        наиболее напряжена. Не после, не при использовании — при изготовлении.</span></li>
+      <li><b>Для каждого случая — своё изображение.</b> <span>Материальный терафим
+        индивидуален; астральный один и принимает видимость по необходимости.</span></li>
+    </ul>
+    <div class="quote">Даже самая скромная заклинательница требует прежде всего изображения
+      или близкого предмета: эти вещи <b>направляют её психическую энергию</b> и помогают
+      умножить воздействие — «как маяк или придорожный знак».
+      <cite>«Знаки Агни Йоги», § 419 — пересказ</cite></div>
+    <p class="sub">Обратите внимание на последнюю формулировку: предмет здесь — русло
+      и усилитель энергии оператора, а не самостоятельный источник. К этому вернёмся
+      на предпоследнем слайде.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Здоровье · Письма Е. И. Рерих, т. 2, 1934</div>
+    <h2>Терафим как средство охраны здоровья</h2>
+    <p class="sub">Целое письмо-ответ на прямой вопрос «Что есть терафим?». Наиболее
+      практическое место всей доктрины — и наименее известное.</p>
+    <div class="quote">Широко говоря, терафим есть <b>талисман</b>; таким терафимом является
+      каждый предмет, насыщенный наслоениями психической энергии. Неся энергию, наслоенную
+      с определённым приказом, он передаёт его тому, кому послан.
+      <cite>Письма Е. И. Рерих, т. 2, стр. 418 — пересказ</cite></div>
+    <div class="cards c3" style="margin-top:22px">
+      <div class="card"><span class="n">Применение</span>
+        <p>Через такой терафим можно влиять на человека, <b>охраняя его здоровье</b>.
+        Названо прямо, а не выводится.</p></div>
+      <div class="card"><span class="n">Механизм</span>
+        <p>В объяснение автор отсылает к опытам с <b>экстериоризацией
+        чувствительности</b> — экспериментальной литературе конца XIX века.</p></div>
+      <div class="card"><span class="n">Цена</span>
+        <p>Целительство <b>отнимает много психической энергии</b>, и она восстанавливается
+        нелегко. Группу целителей — с величайшей осторожностью.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Регламент · «Знаки Агни Йоги», §§ 420–421</div>
+    <h2>Как терафим изготавливают</h2>
+    <div class="cards c2">
+      <div class="card"><span class="n">Форма и адрес</span>
+        <p>Скульптурное изображение <b>либо любой предмет</b>, к которому присоединено
+        нечто, принадлежащее человеку. В храме Израиля терафим был общим, а под него
+        полагали принадлежащее заклинаемому: форма универсальна, адресность даёт
+        «свидетель». Лепится из воска, глины или извести; покрывается ковчегом —
+        серебряным, хрустальным, стеклянным или кожаным.</p></div>
+      <div class="card"><span class="n">Заряжание</span>
+        <p>Значение имеет <b>не смысл слов, а ритм</b>. Сила приказа наслаивается
+        <b>наложением рук</b>. Нагружать <b>не менее трёх раз в день</b>. Поверхность
+        не делать полированной — чтобы лучше наслоить волю. Покрывать тканью, применять
+        курения смолистых веществ и эвкалипт. Готовится долго, и воздействие тоже
+        не мгновенно.</p></div>
+    </div>
+    <div class="quote" style="border-color:var(--cim)">Признак, что идёт правильно, дан
+      не по результату, а по состоянию: при благом воздействии ощущается
+      <b>теплота внутри сердца</b>. Равнодушное повторение приказа остаётся безрезультатным —
+      необходимо участие сердца.
+      <cite>Письма Е. И. Рерих, т. 6, стр. 487–488, 1938–39 — пересказ</cite></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Геометрия · «Знаки Агни Йоги», § 431 + Письма, т. 6, стр. 349</div>
+    <h2>«Колесо Будды» — терафим как начертание</h2>
+    <p class="sub">Единственное место, где терафим описан геометрически. Назван
+      «сущностью терафима дальних миров». Модель ниже можно поворачивать мышью.</p>
+    <div id="stage">
+      <canvas id="cv3"></canvas>
+      <div id="fallback">Для интерактивной модели нужен доступ к сети.<br>
+        Состав фигуры описан в тексте справа.</div>
+    </div>
+    <div class="ctl">
+      <label><input type="checkbox" id="k6s" checked> вращение</label>
+      <label><input type="checkbox" id="k6v"> объём знака</label>
+      <span>потяните мышью, чтобы повернуть</span>
+    </div>
+    <div class="prov">
+      <div><b>Задано источником</b>Стержень-«пестик» как основа. Сферы полярности на его
+        концах, «соответственно двум основным законам». Колесо психической энергии
+        в середине. Свастика — в середине колеса и <b>поперёк стержня</b>, вращающаяся.
+        Круг вращения радуги как «все стадии пространственного огня». Фохатические искры
+        копятся в полярных утолщениях и в самой окружности. И главное: представляя себе
+        это начертание, можно вызвать приближение огня, обращая опасное свойство
+        в целебное.</div>
+      <div><b>Реконструкция — не из текста</b>Вертикальность оси: ориентация не задана.
+        Все пропорции. Направление вращения и рука знака. Число и поведение искр. Цвета.
+        Объём: в тексте это «начертание», то есть фигура плоская, — поэтому по умолчанию
+        знак здесь без толщины.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Хронология</div>
+    <h2>Девяносто пять лет непрерывной линии</h2>
+    <div class="tline">
+      <div class="row"><div class="yr">1877–1891</div><div class="tx">Блаватская — 47 вхождений.
+        <span>Основная масса в третьем томе «Тайной Доктрины»; терафимы связаны
+        с оракулами.</span></div></div>
+      <div class="row"><div class="yr">1922</div><div class="tx">«Зов» — понятие есть
+        с первой книги. <span>Созданным терафимом предлагается пробить толщу зла.</span></div></div>
+      <div class="row"><div class="yr">1929</div><div class="tx">«Знаки Агни Йоги» — ядро.
+        <span>§§ 417–423 и 431: определение, свидетель, регламент заряжания, геометрия.</span></div></div>
+      <div class="row"><div class="yr">1933–39</div><div class="tx">Письма Е. И. Рерих —
+        32 вхождения. <span>Талисман; охрана здоровья; практические указания ученикам;
+        теплота в сердце как признак.</span></div></div>
+      <div class="row"><div class="yr">1938</div><div class="tx">«Надземное» — переоценка.
+        <span>Терафимы «экономят силу посылки», работают как мультипликатор; сильной воле
+        не нужны; лучший терафим — в сердце.</span></div></div>
+      <div class="row"><div class="yr">1950–1972</div><div class="tx">«Грани Агни Йоги» —
+        25 вхождений. <span>Линия развивается: фотография прямо названа терафимом;
+        наслаивание ритмом; аура предмета как объяснение амулетов.</span></div></div>
+    </div>
+    <p class="sub">Слово встречается у всех авторов традиции без разрывов. Это не
+      периферийный термин.</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Сопоставление</div>
+    <h2>Поэлементное совпадение</h2>
+    <p class="sub">Слева — сказанное в текстах 1929–1958 годов. Справа — устройство метода,
+      сложившегося в 1990-е. Ни один элемент не подгонялся.</p>
+    <table>
+      <tr><th>Терафим</th><th></th><th>Вибрационный ряд</th></tr>
+      <tr><td>Изображение, лепная форма, «начертание» § 431</td><td class="ar">→</td>
+        <td class="d">Геометрическая фигура в системе концентрических окружностей</td></tr>
+      <tr><td>Нечто, принадлежащее лицу; фотография ученика («Грани», 1958)</td><td class="ar">→</td>
+        <td class="d">Фотография человека</td></tr>
+      <tr><td>Главный акт при построении; наслоение ритмом</td><td class="ar">→</td>
+        <td class="d">Построение и зарядка ряда оператором</td></tr>
+      <tr><td>Нагружать не менее трёх раз в день; готовится долго</td><td class="ar">→</td>
+        <td class="d">Работа, растянутая во времени</td></tr>
+      <tr><td>Для каждого случая — своё изображение</td><td class="ar">→</td>
+        <td class="d">Ряд под конкретного человека</td></tr>
+      <tr><td>Влиять на человека, охраняя его здоровье</td><td class="ar">→</td>
+        <td class="d">Лечебное назначение</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Границы утверждения</div>
+    <h2>Чего из этого не следует</h2>
+    <p class="sub">Этот слайд важнее предыдущего. Поэлементное сходство — сильное
+      наблюдение, но оно говорит о родстве типа, а не о происхождении.</p>
+    <ul class="big">
+      <li><b>Заимствование не документировано.</b> <span>Л. Г. Пучко не называет источников.
+        Более того: сплошной поиск по её книге 2010 года даёт <b>ноль</b> вхождений слов
+        «Рерих», «Агни Йога», «Живая Этика», «терафим», «Блаватская», «психическая
+        энергия».</span></li>
+      <li><b>Её названные источники — иные.</b> <span>Дианетика Хаббарда (термин
+        «инграмма»), электроакупунктура Фолля, «волновая генетика», а символы возводятся
+        к «праалфавиту» по книге 1998 года. Ни одного теософского имени.</span></li>
+      <li><b>Значит, вероятнее общий тип, а не линия передачи.</b> <span>Симпатическая
+        образная магия — сквозная фигура культуры; сходные конструкции возникают
+        независимо. Терафим и вибрационный ряд, по-видимому, два её воплощения.</span></li>
+      <li><b>И отдельно: древность не есть подтверждение.</b> <span>То, что идея
+        прослеживается на девяносто пять лет назад, ничего не говорит о её действенности:
+        устойчивость представления и его верность — разные вещи.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">Внутренний спор</div>
+    <h2>Учение говорит о терафиме не одним голосом</h2>
+    <p class="sub">Вопрос «работает ли заряженный предмет сам по себе» кажется вопросом
+      да/нет. Но высказывания расставлены по всей шкале — и это, возможно, самое
+      интересное для исследователя наследия.</p>
+    <div class="scale">
+      <div class="track"></div>
+      <div class="marks"><span>форма помогает оператору</span><span>форма действует сама</span></div>
+      <div class="scols">
+        <div><b>Пособник</b><p>Терафимы — лишь пособники передачи; сильная воля в них
+          не нуждается. Лучший терафим — в сердце.<br><em>«Надземное», 1938</em></p></div>
+        <div><b>Мультипликатор</b><p>Для сильной посылки не нужны, но могут экономить силу;
+          предмет с накопленной энергией умножает её.<br><em>«Надземное», 1938</em></p></div>
+        <div><b>Русло при операторе</b><p>Изображение направляет психическую энергию
+          заклинающего и умножает воздействие, «как маяк».<br><em>«Знаки», 1929</em></p></div>
+        <div><b>Независимость</b><p>Законченный терафим получает независимое от создателя
+          существование и разворачивает энергию по вложенному направлению.<br>
+          <em>«Грани», 1953</em></p></div>
+      </div>
+    </div>
+    <p class="sub">И тут же — противовес внутри самих «Граней», 1956: осознание посланного
+      усиливает его действие, а отвергнутое по невежеству сводит силу к нулю. То есть
+      традиция сама местами ставит эффект в зависимость от участия получателя.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow">К обсуждению</div>
+    <h2>Что здесь может быть интересно исследователю</h2>
+    <div class="cards c2">
+      <div class="card"><span class="n">Малоизученный пласт</span>
+        <p>Практическая сторона доктрины терафима почти не разобрана в литературе
+        о наследии: регламент § 421, «теплота в сердце» как критерий, охрана здоровья,
+        живые терафимы, отсылка к экстериоризации чувствительности.</p></div>
+      <div class="card"><span class="n">Внутренняя эволюция</span>
+        <p>От накопителя, держащего силу тысячелетиями (1929), к пособнику, экономящему
+        силу (1938), и обратно к независимому существованию (1953). Смещение читается
+        как содержательное развитие, а не как разноголосица.</p></div>
+      <div class="card"><span class="n">Судьба идеи вне традиции</span>
+        <p>Конструкция воспроизводится в поздних практиках, ничего не знающих
+        об источнике. Это отдельный сюжет: как форма переживает своё учение.</p></div>
+      <div class="card"><span class="n">Инструмент</span>
+        <p>Корпус собран в машиночитаемом виде, поиск занимает секунды. Любое утверждение
+        здесь проверяется по адресу: книга, параграф, том, страница.</p></div>
+    </div>
+    <p class="sub" style="margin-top:26px">Источники: 14 книг Живой Этики · Письма
+      Е. И. Рерих, издание МЦР, 9 томов · «Грани Агни Йоги» Б. Н. Абрамова, 1950–1972 ·
+      Блаватская в русских переводах · Письма Махатм. Нумерация параграфов дана
+      по распространённым электронным изданиям и может отличаться на единицу.</p>
+  </div>
+</section>
+
+</div>
+
+<div id="nav">
+  <div class="navgrp">
+    <button class="nb" id="prev">← Назад</button>
+    <span id="count"></span>
+    <button class="nb" id="next">Вперёд →</button>
+  </div>
+  <div id="dots" role="tablist" aria-label="Слайды"></div>
+</div>
+<div class="sr" aria-live="polite" id="live"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+var running=false;
+/* ---------- навигация ---------- */
+var slides=[].slice.call(document.querySelectorAll('.slide'));
+var dots=document.getElementById('dots'),count=document.getElementById('count');
+var prev=document.getElementById('prev'),next=document.getElementById('next');
+var live=document.getElementById('live'),i=0;
+slides.forEach(function(s,k){
+  var b=document.createElement('button');
+  b.setAttribute('role','tab'); b.setAttribute('aria-label','Слайд '+(k+1));
+  b.onclick=function(){go(k)};
+  dots.appendChild(b);
+});
+function go(k){
+  i=Math.max(0,Math.min(slides.length-1,k));
+  slides.forEach(function(s,n){s.classList.toggle('on',n===i);s.scrollTop=0});
+  [].forEach.call(dots.children,function(d,n){d.classList.toggle('on',n===i)});
+  count.textContent=(i+1)+' / '+slides.length;
+  prev.disabled=i===0; next.disabled=i===slides.length-1;
+  live.textContent='Слайд '+(i+1)+' из '+slides.length;
+  running = (i===5);
+}
+prev.onclick=function(){go(i-1)}; next.onclick=function(){go(i+1)};
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1)}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+  if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
+});
+go(0);
+
+/* ---------- 3D ---------- */
+if(typeof THREE==='undefined'){document.getElementById('fallback').style.display='grid';return;}
+var cv=document.getElementById('cv3'),stage=document.getElementById('stage');
+var scene=new THREE.Scene();
+var cam=new THREE.PerspectiveCamera(38,1,0.1,100); cam.position.set(0,1.3,5.6); cam.lookAt(0,0,0);
+var rend=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+rend.setPixelRatio(Math.min(window.devicePixelRatio,2));
+scene.add(new THREE.HemisphereLight(0xffffff,0x554433,0.9));
+var d1=new THREE.DirectionalLight(0xffffff,0.7); d1.position.set(3,5,4); scene.add(d1);
+var d2=new THREE.DirectionalLight(0xffd9a0,0.4); d2.position.set(-4,-3,-3); scene.add(d2);
+var root=new THREE.Group(); scene.add(root);
+var R=0.055;
+var mRod=new THREE.MeshStandardMaterial({color:0x8f8c83,roughness:.55,metalness:.25});
+var mTop=new THREE.MeshStandardMaterial({color:0xFAC775,roughness:.4,metalness:.2});
+var mBot=new THREE.MeshStandardMaterial({color:0x854F0B,roughness:.5,metalness:.2});
+var mWhl=new THREE.MeshStandardMaterial({color:0xBA7517,roughness:.5,metalness:.2});
+var mSwa=new THREE.MeshStandardMaterial({color:0xD85A30,roughness:.5,metalness:.1,side:THREE.DoubleSide});
+root.add(new THREE.Mesh(new THREE.CylinderGeometry(R,R,3.4,24),mRod));
+var s1=new THREE.Mesh(new THREE.SphereGeometry(.3,32,24),mTop); s1.position.y=1.7; root.add(s1);
+var s2=new THREE.Mesh(new THREE.SphereGeometry(.3,32,24),mBot); s2.position.y=-1.7; root.add(s2);
+var spin=new THREE.Group(); root.add(spin);
+var plane=new THREE.Group(); plane.rotation.x=-Math.PI/2; spin.add(plane);
+plane.add(new THREE.Mesh(new THREE.TorusGeometry(1.0,.03,12,120),mWhl));
+var sw=new THREE.Group(),t=.13,B=.45,A=.7,HR=.11,HT=.05,OUT=HR+HT,len=A-OUT;
+sw.add(new THREE.Mesh(new THREE.TorusGeometry(HR,HT,10,28),mSwa));
+function bar(w,h,x,y){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,t),mSwa);m.position.set(x,y,0);sw.add(m);}
+bar(t,len,0,OUT+len/2); bar(t,len,0,-(OUT+len/2));
+bar(len,t,OUT+len/2,0); bar(len,t,-(OUT+len/2),0);
+bar(B,t,B/2,A); bar(t,B,A,-B/2); bar(B,t,-B/2,-A); bar(t,B,-A,B/2);
+sw.scale.z=.09; plane.add(sw);
+var rg=new THREE.TorusGeometry(1.34,.02,10,200),cols=[],pos=rg.attributes.position,cc=new THREE.Color();
+for(var q=0;q<pos.count;q++){var aq=Math.atan2(pos.getY(q),pos.getX(q));
+  cc.setHSL((aq+Math.PI)/(2*Math.PI),.7,.55); cols.push(cc.r,cc.g,cc.b);}
+rg.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+var ring=new THREE.Mesh(rg,new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,opacity:.95,depthWrite:false}));
+ring.rotation.x=-Math.PI/2; root.add(ring);
+var N=520,pg=new THREE.BufferGeometry(),pp=new Float32Array(N*3),pc=new Float32Array(N*3);
+var ang=[],rad=[],hgt=[],spd=[],phs=[];
+for(var j=0;j<N;j++){ang.push(Math.random()*6.283);rad.push((Math.random()-.5)*.17);
+  hgt.push((Math.random()-.5)*.17);spd.push(.0016+Math.random()*.007);phs.push(Math.random()*6.283);}
+pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+pg.setAttribute('color',new THREE.BufferAttribute(pc,3));
+root.add(new THREE.Points(pg,new THREE.PointsMaterial({size:.05,sizeAttenuation:true,
+  vertexColors:true,transparent:true,opacity:.85,depthWrite:false})));
+var sg=new THREE.BufferGeometry(),pts=[];
+for(var k=0;k<70;k++){var s=k%2?1.62:-1.62,ph=Math.random()*6.283,rd=Math.random()*.42;
+  pts.push(Math.cos(ph)*rd,s+(Math.random()-.5)*.34,Math.sin(ph)*rd);}
+var base=pts.slice();
+sg.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));
+var sparks=new THREE.Points(sg,new THREE.PointsMaterial({color:0xF7C463,size:.055,
+  sizeAttenuation:true,transparent:true,opacity:.95}));
+root.add(sparks);
+root.rotation.x=-.28; root.rotation.y=.5;
+var cS=document.getElementById('k6s'),cV=document.getElementById('k6v');
+cV.onchange=function(){sw.scale.z=cV.checked?1:.09};
+var down=false,px=0,py=0;
+cv.addEventListener('pointerdown',function(e){down=true;px=e.clientX;py=e.clientY;
+  cv.classList.add('dg');cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',function(e){if(!down)return;
+  root.rotation.y+=(e.clientX-px)*.008; root.rotation.x+=(e.clientY-py)*.008;
+  root.rotation.x=Math.max(-1.5,Math.min(1.5,root.rotation.x)); px=e.clientX; py=e.clientY});
+function up(){down=false;cv.classList.remove('dg')}
+cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+function size(){var w=stage.clientWidth||760,h=stage.clientHeight||400;
+  rend.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix()}
+size(); window.addEventListener('resize',size);
+var cl=0,fr=0,tc=new THREE.Color();
+function loop(){requestAnimationFrame(loop);
+  if(!running)return;
+  cl+=.012; fr++;
+  if(cS.checked) spin.rotation.y+=.009;
+  for(var m=0;m<N;m++){ang[m]+=spd[m];
+    var rr=1.34+rad[m]+Math.sin(cl*2.1+phs[m])*.045, a=ang[m];
+    pp[m*3]=Math.cos(a)*rr; pp[m*3+1]=hgt[m]+Math.cos(cl*1.7+phs[m]*1.3)*.05;
+    pp[m*3+2]=Math.sin(a)*rr;
+    if(fr%3===0){tc.setHSL(((a%6.283)+6.283)%6.283/6.283,.85,.58+.1*Math.sin(cl*3+phs[m]));
+      pc[m*3]=tc.r; pc[m*3+1]=tc.g; pc[m*3+2]=tc.b;}}
+  pg.attributes.position.needsUpdate=true;
+  if(fr%3===0)pg.attributes.color.needsUpdate=true;
+  var p=sg.attributes.position;
+  for(var n2=0;n2<p.count;n2++)p.setY(n2,base[n2*3+1]+Math.sin(cl*1.6+n2*.7)*.035);
+  p.needsUpdate=true;
+  rend.render(scene,cam);
+}
+loop();
+var ro=new ResizeObserver(size); ro.observe(stage);
+})();
+</script>
+</body>
+</html>
