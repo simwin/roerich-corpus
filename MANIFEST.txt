@@ -1,0 +1,74 @@
+MANIFEST — КОРПУС ДЛЯ АНАЛИЗА
+================================================================================
+Назначение: этот файл лежит И в репозитории, И в базе знаний проекта.
+Он говорит ассистенту, ЧТО и ГДЕ лежит, чтобы корпус подтягивался
+одной командой в любом новом чате, не занимая базу знаний.
+
+Репозиторий: https://github.com/simwin/roerich-corpus
+Ветка: main
+Формат: JSONL — одна запись на строку, UTF-8.
+
+КАК ПОДТЯНУТЬ ВЕСЬ КОРПУС (в чате с исполнением кода):
+  git clone --depth 1 https://github.com/simwin/roerich-corpus.git
+КАК ПОДТЯНУТЬ ОДИН ФАЙЛ:
+  curl -sL -O https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/agni_corpus.jsonl
+Файлы .jsonl.gz читаются напрямую: gzip.open(path, "rt", encoding="utf-8")
+
+--------------------------------------------------------------------------------
+СОСТАВ
+--------------------------------------------------------------------------------
+файл                                            записей        слов     размер
+corpus/agni_corpus.jsonl                          7,585     776,136    10.8 MB
+corpus/ei_letters_corpus.jsonl                    7,192   2,507,530    30.5 MB
+corpus/glossary_corpus.jsonl                      2,780     134,851     2.0 MB
+corpus/grani_corpus.jsonl                        14,171   2,671,692    32.2 MB
+corpus/mahatma_corpus.jsonl                       1,433     384,602     4.7 MB
+corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
+ИТОГО                                            33,172   7,898,715    97.5 MB
+
+--------------------------------------------------------------------------------
+СХЕМА ПОЛЕЙ (по первой записи каждого файла)
+--------------------------------------------------------------------------------
+• corpus/agni_corpus.jsonl
+    поля: source, book, ref, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/agni_corpus.jsonl
+    пример: {"source": "Агни Йога", "book": "Листы Сада Мории. Зов", "ref": "Зов. 1920  Март 24", "file": "1920.03.24.htm", "text": "ЛОНДОН. 1920. Март 24\n\nЯ – твое благо.\n\nЯ – твоя улыбка.\n\nЯ …", "words": 92, "chars": 648}
+
+• corpus/ei_letters_corpus.jsonl
+    поля: source, edition, ref, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_letters_corpus.jsonl
+    пример: {"source": "Письма Е.И.Рерих", "edition": "т. 1. 1919-1933 гг. (МЦР)", "ref": "т. 1. 1919-1933 гг. (МЦР), стр. 247", "file": "1.247.htm", "text": "т. 1. 1919-1933 гг. (МЦР), стр. 247. // №100. А.М.Асееву. 28…", "words": 376, "chars": 2686}
+
+• corpus/glossary_corpus.jsonl
+    поля: source, headword, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/glossary_corpus.jsonl
+    пример: {"source": "Теософский словарь", "headword": "1 РАВВИН АБУЛАФИА", "file": "help3490.html", "text": "1 РАВВИН АБУЛАФИА из Сарагосы, родился в 1240 г., основал шк…", "words": 23, "chars": 164}
+
+• corpus/grani_corpus.jsonl
+    поля: file, year, date, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/grani_corpus.jsonl
+    пример: {"file": "1950.1.htm", "year": 1950, "date": "1950 г. 1 А", "text": "1950 г. 1 А. Нужно знать всё. Состояние сознания мешает. Где…", "words": 400, "chars": 2695}
+
+• corpus/mahatma_corpus.jsonl
+    поля: source, ref, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/mahatma_corpus.jsonl
+    пример: {"source": "Учение Махатм", "ref": "Учение Махатм - стр. 012", "file": "__0121.htm", "text": "Учение Махатм, стр. 012. Предисловие монотеисту, взывающему …", "words": 297, "chars": 2137}
+
+• corpus/sd_corpus.jsonl
+    поля: source, volume, part, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/sd_corpus.jsonl
+    пример: {"source": "Тайная Доктрина", "volume": "т. 1. Космогенезис", "part": 1, "file": "Cosmogenez1.docx", "text": "# ТАЙНАЯ ДОКТРИНА\n\nСИНТЕЗ\n\nНАУКИ, РЕЛИГИИ, И ФИЛОСОФИИ\n\nЕ. П…", "words": 110738, "chars": 807495}
+
+--------------------------------------------------------------------------------
+ОГОВОРКИ
+--------------------------------------------------------------------------------
+• Тексты конвертированы из CHM/DOC; изредка теряется первая буква
+  абзаца-буквицы (артефакт конвертации). На поиск и частоты не влияет.
+• Права на тексты принадлежат правообладателям изданий; репозиторий
+  собран для личного исследовательского использования.

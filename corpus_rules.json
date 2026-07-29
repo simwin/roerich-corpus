@@ -1,0 +1,97 @@
+{
+  "_comment": "Машиночитаемая версия правил из README.md. Загружается corpus.py и применяется автоматически. Правило, записанное только прозой, рано или поздно будет забыто; правило в коде — нет.",
+  "version": 1,
+  "text_field": "text",
+  "words_field": "words",
+
+  "files": {
+    "grani_corpus.jsonl": {
+      "work": "Грани Агни Йоги",
+      "author": "Б. Н. Абрамов",
+      "years": [1950, 1972],
+      "layer": "grani",
+      "granularity": "paragraph",
+      "records": 14171,
+      "canonical": true,
+      "date_fields": ["year", "date"]
+    },
+    "agni_corpus.jsonl": {
+      "work": "Агни Йога / Живая Этика (14 книг)",
+      "author": "Е. И. и Н. К. Рерих",
+      "years": [1920, 1938],
+      "layer": "living_ethics",
+      "granularity": "shloka",
+      "records": 7585,
+      "canonical": true,
+      "ref_fields": ["book", "ref"]
+    },
+    "ei_letters_corpus.jsonl": {
+      "work": "Письма Е. И. Рерих",
+      "years": [1919, 1955],
+      "layer": "living_ethics",
+      "granularity": "page",
+      "records": 7192,
+      "canonical": true,
+      "dedup": {
+        "field": "edition",
+        "keep_contains": "(МЦР)",
+        "reason": "Три пересекающихся издания. Каноническое — МЦР, 9 томов, ~1,78 млн слов. Классическое 2-томное и «Письма в Америку» дублируют содержание; без фильтра частоты завышаются примерно вдвое."
+      }
+    },
+    "mahatma_corpus.jsonl": {
+      "work": "Письма Махатм и смежное",
+      "years": [1880, 1888],
+      "layer": "theosophy",
+      "granularity": "letter",
+      "records": 1433,
+      "canonical": true,
+      "secondary_sources": ["Учение Махатм", "Чаша Востока"],
+      "secondary_reason": "Селекции, частично пересекающиеся с «Письмами Махатм» и «Письмами Мастеров Мудрости». Для частотных подсчётов исключать; для поиска цитат оставлять."
+    },
+    "glossary_corpus.jsonl": {
+      "work": "Теософский словарь",
+      "author": "Е. П. Блаватская",
+      "layer": "theosophy",
+      "granularity": "entry",
+      "records": 2780,
+      "canonical": false,
+      "exclude_from_frequency": true,
+      "exclude_reason": "Справочник, а не связная проза. Статьи-определения искажают частоты дискурса: термин там встречается по построению, а не по употреблению. Для глоссария и проверки значений — использовать."
+    },
+    "sd_corpus.jsonl": {
+      "work": "Тайная Доктрина (т.1–3), Разоблачённая Изида (т.1–2), Ключ к теософии, Новый Панарион",
+      "author": "Е. П. Блаватская",
+      "years": [1877, 1891],
+      "layer": "theosophy",
+      "granularity": "volume_part",
+      "records": 11,
+      "canonical": true,
+      "large_records": true,
+      "large_records_note": "11 записей на ~1,5 млн слов: одна запись = том или часть тома. Прямой KWIC по записи бесполезен — нужно окно по символам вокруг вхождения (corpus.py делает это сам)."
+    }
+  },
+
+  "layers": {
+    "theosophy": {
+      "label": "Теософия",
+      "period": "1877–1891",
+      "files": ["sd_corpus.jsonl", "glossary_corpus.jsonl", "mahatma_corpus.jsonl"]
+    },
+    "living_ethics": {
+      "label": "Живая Этика",
+      "period": "1920–1955",
+      "files": ["agni_corpus.jsonl", "ei_letters_corpus.jsonl"]
+    },
+    "grani": {
+      "label": "Грани Агни Йоги",
+      "period": "1950–1972",
+      "files": ["grani_corpus.jsonl"]
+    }
+  },
+
+  "quality_notes": [
+    "Все тексты перекодированы из Windows-1251, разметка вычищена.",
+    "Тайная Доктрина и спутники конвертированы из старых .doc через LibreOffice: изредка теряется первая буква абзаца-буквицы. На поиск по корню и частоты не влияет, но при точном совпадении в начале абзаца возможен промах.",
+    "Русская морфология: искать по корню с усечением (терафим, наслое, насыщ), а не по точной словоформе."
+  ]
+}
