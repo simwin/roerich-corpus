@@ -19,12 +19,13 @@ MANIFEST — КОРПУС ДЛЯ АНАЛИЗА
 --------------------------------------------------------------------------------
 файл                                            записей        слов     размер
 corpus/agni_corpus.jsonl                          7,585     776,136    10.8 MB
+corpus/de_rochas_1895.jsonl                          10      79,635   493.8 KB
 corpus/ei_letters_corpus.jsonl                    7,192   2,507,530    30.5 MB
 corpus/glossary_corpus.jsonl                      2,780     134,851     2.0 MB
 corpus/grani_corpus.jsonl                        14,171   2,671,692    32.2 MB
 corpus/mahatma_corpus.jsonl                       1,433     384,602     4.7 MB
 corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
-ИТОГО                                            33,172   7,898,715    97.5 MB
+ИТОГО                                            33,182   7,978,350    98.0 MB
 
 --------------------------------------------------------------------------------
 СХЕМА ПОЛЕЙ (по первой записи каждого файла)
@@ -34,6 +35,12 @@ corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
     текст в поле: "text"
     ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/agni_corpus.jsonl
     пример: {"source": "Агни Йога", "book": "Листы Сада Мории. Зов", "ref": "Зов. 1920  Март 24", "file": "1920.03.24.htm", "text": "ЛОНДОН. 1920. Март 24\n\nЯ – твое благо.\n\nЯ – твоя улыбка.\n\nЯ …", "words": 92, "chars": 648}
+
+• corpus/de_rochas_1895.jsonl
+    поля: source, author, year, edition, lang, chapter_id, chapter_num, chapter_title, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/de_rochas_1895.jsonl
+    пример: {"source": "L'Extériorisation de la sensibilité", "author": "Albert de Rochas d'Aiglun", "year": 1895, "edition": "2e éd., Paris, Chamuel, 1895", "lang": "fr", "chapter_id": "front_matter", "chapter_num": null, "chapter_title": "Титул и предисловие", "file": "deRosha.txt", "text": "L'EXTERIORISATION
 
 • corpus/ei_letters_corpus.jsonl
     поля: source, edition, ref, file, text, words, chars

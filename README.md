@@ -1,54 +1,47 @@
-# Корпус традиции: Теософия → Живая Этика → Грани Агни Йоги
+# Корпус теософских и рериховских текстов
 
-Структурированный текстовый корпус, извлечённый из исходных CHM/DOC, перекодированный
-в UTF-8, очищенный от разметки и размеченный по произведениям/томам/годам.
+Корпус в формате **JSONL** для вычислительного анализа: частотности, тематический поиск, конкордансы, сравнение исторических слоёв.
 
-Формат: **JSONL** — один JSON-объект на строку (одна «единица текста»).
-Во всех файлах есть общие поля: `text` (чистый текст), `words` (число слов),
-`chars` (число символов), `file` (исходное имя файла), `source`/иные ярлыки.
+**Объём:** 33,182 записей, ≈7,978,350 слов, 98.0 MB.
 
-## Файлы
+## Быстрый старт
 
-| Файл | Произведение(я) | Записей | Поля |
-|------|------------------|---------|------|
-| `grani_corpus.jsonl` | Грани Агни Йоги (Б. Н. Абрамов, 1950–1972) | 14 171 | `file, year, date, text, words, chars` |
-| `agni_corpus.jsonl` | Агни Йога / Живая Этика (14 книг, ~1920–1938) | 7 585 | `source, book, ref, file, text, words, chars` |
-| `ei_letters_corpus.jsonl` | Письма Е. И. Рерих (3 издания, постранично) | 7 192 | `source, edition, ref, file, text, words, chars` |
-| `mahatma_corpus.jsonl` | Письма Махатм, Письма Мастеров Мудрости, Учение Махатм, Чаша Востока | 1 433 | `source, ref, file, text, words, chars` |
-| `glossary_corpus.jsonl` | Теософский словарь (Е. П. Блаватская) | 2 780 | `source, headword, file, text, words, chars` |
-| `sd_corpus.jsonl` | Тайная Доктрина (т.1–3), Разоблачённая Изида (т.1–2), Ключ к теософии, Новый Панарион | 11 | `source, volume, part, file, text, words, chars` |
-
-## Важные замечания о дублировании
-
-- **Письма Е. И. Рерих** содержат ТРИ издания, пересекающихся по содержанию.
-  Для подсчётов используйте только издание МЦР: `edition` содержит `"(МЦР)"`
-  (9 томов, 1919–1955, ~1,78 млн слов). Классическое 2-томное и «Письма в Америку» —
-  дубли, отфильтруйте их.
-- **Письма Махатм**: «Письма Махатм» и «Письма Мастеров Мудрости» — основные;
-  «Учение Махатм» и «Чаша Востока» частично пересекаются с ними (селекции).
-- **Теософский словарь** — справочник (статьи-определения), не связная проза;
-  для частотного анализа дискурса его обычно исключают.
-
-## Гранулярность
-
-- Грани, Агни Йога, Письма Махатм/Мастеров — одна запись = один параграф/шлока/письмо.
-- Письма Е. И. Рерих и Тайная Доктрина/Изида — постранично или по томам/частям
-  (`sd_corpus.jsonl`: 1 запись = 1 том-часть; текст крупными блоками).
-
-## Оговорки по качеству
-
-- Все тексты перекодированы из Windows-1251; разметка вычищена.
-- Тайная Доктрина и спутники конвертированы из старых .doc через LibreOffice:
-  изредка теряется первая буква абзаца-буквицы (артефакт), на частотный анализ не влияет.
-
-## Пример чтения (Python)
+```bash
+git clone --depth 1 https://github.com/simwin/roerich-corpus.git
+```
 
 ```python
-import json
-recs = [json.loads(l) for l in open('grani_corpus.jsonl', encoding='utf-8')]
-print(recs[0]['date'], recs[0]['words'])
+import json, gzip
 
-# только письма МЦР
-ei = [json.loads(l) for l in open('ei_letters_corpus.jsonl', encoding='utf-8')]
-mcr = [r for r in ei if '(МЦР)' in r['edition']]
+def load(path):
+    op = gzip.open if path.endswith(".gz") else open
+    with op(path, "rt", encoding="utf-8") as fh:
+        return [json.loads(l) for l in fh if l.strip()]
 ```
+
+## Состав
+
+| файл | записей | слов | размер |
+|---|---:|---:|---:|
+| `corpus/agni_corpus.jsonl` | 7,585 | 776,136 | 10.8 MB |
+| `corpus/de_rochas_1895.jsonl` | 10 | 79,635 | 493.8 KB |
+| `corpus/ei_letters_corpus.jsonl` | 7,192 | 2,507,530 | 30.5 MB |
+| `corpus/glossary_corpus.jsonl` | 2,780 | 134,851 | 2.0 MB |
+| `corpus/grani_corpus.jsonl` | 14,171 | 2,671,692 | 32.2 MB |
+| `corpus/mahatma_corpus.jsonl` | 1,433 | 384,602 | 4.7 MB |
+| `corpus/sd_corpus.jsonl` | 11 | 1,423,904 | 17.3 MB |
+
+## Схема
+
+- `corpus/agni_corpus.jsonl` — поля: `source`, `book`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/de_rochas_1895.jsonl` — поля: `source`, `author`, `year`, `edition`, `lang`, `chapter_id`, `chapter_num`, `chapter_title`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/ei_letters_corpus.jsonl` — поля: `source`, `edition`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/glossary_corpus.jsonl` — поля: `source`, `headword`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/grani_corpus.jsonl` — поля: `file`, `year`, `date`, `text`, `words`, `chars`; текст в `text`
+- `corpus/mahatma_corpus.jsonl` — поля: `source`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/sd_corpus.jsonl` — поля: `source`, `volume`, `part`, `file`, `text`, `words`, `chars`; текст в `text`
+
+## Оговорки
+
+- Конвертация из CHM/DOC: изредка теряется первая буква абзаца-буквицы. На поиск и частоты не влияет.
+- Права на тексты принадлежат правообладателям изданий; репозиторий собран для личного исследовательского использования.

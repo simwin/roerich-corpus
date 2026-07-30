@@ -3,31 +3,45 @@
   "version": 1,
   "text_field": "text",
   "words_field": "words",
-
   "files": {
     "grani_corpus.jsonl": {
       "work": "Грани Агни Йоги",
       "author": "Б. Н. Абрамов",
-      "years": [1950, 1972],
+      "years": [
+        1950,
+        1972
+      ],
       "layer": "grani",
       "granularity": "paragraph",
       "records": 14171,
       "canonical": true,
-      "date_fields": ["year", "date"]
+      "date_fields": [
+        "year",
+        "date"
+      ]
     },
     "agni_corpus.jsonl": {
       "work": "Агни Йога / Живая Этика (14 книг)",
       "author": "Е. И. и Н. К. Рерих",
-      "years": [1920, 1938],
+      "years": [
+        1920,
+        1938
+      ],
       "layer": "living_ethics",
       "granularity": "shloka",
       "records": 7585,
       "canonical": true,
-      "ref_fields": ["book", "ref"]
+      "ref_fields": [
+        "book",
+        "ref"
+      ]
     },
     "ei_letters_corpus.jsonl": {
       "work": "Письма Е. И. Рерих",
-      "years": [1919, 1955],
+      "years": [
+        1919,
+        1955
+      ],
       "layer": "living_ethics",
       "granularity": "page",
       "records": 7192,
@@ -40,12 +54,18 @@
     },
     "mahatma_corpus.jsonl": {
       "work": "Письма Махатм и смежное",
-      "years": [1880, 1888],
+      "years": [
+        1880,
+        1888
+      ],
       "layer": "theosophy",
       "granularity": "letter",
       "records": 1433,
       "canonical": true,
-      "secondary_sources": ["Учение Махатм", "Чаша Востока"],
+      "secondary_sources": [
+        "Учение Махатм",
+        "Чаша Востока"
+      ],
       "secondary_reason": "Селекции, частично пересекающиеся с «Письмами Махатм» и «Письмами Мастеров Мудрости». Для частотных подсчётов исключать; для поиска цитат оставлять."
     },
     "glossary_corpus.jsonl": {
@@ -61,37 +81,77 @@
     "sd_corpus.jsonl": {
       "work": "Тайная Доктрина (т.1–3), Разоблачённая Изида (т.1–2), Ключ к теософии, Новый Панарион",
       "author": "Е. П. Блаватская",
-      "years": [1877, 1891],
+      "years": [
+        1877,
+        1891
+      ],
       "layer": "theosophy",
       "granularity": "volume_part",
       "records": 11,
       "canonical": true,
       "large_records": true,
       "large_records_note": "11 записей на ~1,5 млн слов: одна запись = том или часть тома. Прямой KWIC по записи бесполезен — нужно окно по символам вокруг вхождения (corpus.py делает это сам)."
+    },
+    "de_rochas_1895.jsonl": {
+      "work": "L'Extériorisation de la sensibilité (2e éd., Paris, Chamuel, 1895)",
+      "author": "Albert de Rochas d'Aiglun",
+      "years": [
+        1895,
+        1895
+      ],
+      "layer": "named_sources",
+      "lang": "fr",
+      "granularity": "chapter",
+      "records": 10,
+      "canonical": true,
+      "large_records": true,
+      "large_records_note": "10 записей на ~80 тыс. слов: одна запись = глава. KWIC — окном по символам, как для sd_corpus.",
+      "exclude_from_frequency": true,
+      "exclude_reason": "Текст ФРАНЦУЗСКИЙ. В русские частотные подсчёты не включать ни при каких условиях — исказит всё. Для поиска, цитирования и генеалогии использовать.",
+      "ocr_quality": "Скан Google, OCR ABBYY FineReader 8.0, НЕ вычищен. Диакритика и длинное s страдают, слова рвутся переносами, колонтитулы вклеены в текст. Искать по коротким корням с допуском: envo[uû]t, statuett, poudre de sympathie. Нулевой результат перепроверять вторым написанием.",
+      "provenance": "archive.org/details/lextriorisation00aiggoog — сканировано Google, отметка NOT_IN_COPYRIGHT. Автор умер в 1914 г., книга 1895 г.: общественное достояние.",
+      "dropped": "Из исходника удалена преамбула Google (~1 230 слов юридического текста в начале файла). Больше ничего не удалялось.",
+      "caution_taxil": "Исторический материал глав III–VI частично взят из «Le Diable au XIXe siècle» (палладисты, Альберт Пайк). Это МИСТИФИКАЦИЯ ЛЕО ТАКСИЛЯ, в которой он признался в апреле 1897 г., через два года после выхода книги. Де Роша цитирует добросовестно, но источник фальшивый. При использовании исторической половины помечать всегда."
     }
   },
-
   "layers": {
     "theosophy": {
       "label": "Теософия",
       "period": "1877–1891",
-      "files": ["sd_corpus.jsonl", "glossary_corpus.jsonl", "mahatma_corpus.jsonl"]
+      "files": [
+        "sd_corpus.jsonl",
+        "glossary_corpus.jsonl",
+        "mahatma_corpus.jsonl"
+      ]
     },
     "living_ethics": {
       "label": "Живая Этика",
       "period": "1920–1955",
-      "files": ["agni_corpus.jsonl", "ei_letters_corpus.jsonl"]
+      "files": [
+        "agni_corpus.jsonl",
+        "ei_letters_corpus.jsonl"
+      ]
     },
     "grani": {
       "label": "Грани Агни Йоги",
       "period": "1950–1972",
-      "files": ["grani_corpus.jsonl"]
+      "files": [
+        "grani_corpus.jsonl"
+      ]
+    },
+    "named_sources": {
+      "label": "Названные источники",
+      "period": "1895–",
+      "files": [
+        "de_rochas_1895.jsonl"
+      ],
+      "note": "Тексты, на которые традиция или исследуемые авторы ССЫЛАЮТСЯ ПРЯМО. Не часть учения; нужны, чтобы проверять покрытие ссылок (вопрос Б) и превращать структурное сходство в названную опору (вопрос А). Языки разные — в частотные подсчёты по русскому корпусу не включать."
     }
   },
-
   "quality_notes": [
     "Все тексты перекодированы из Windows-1251, разметка вычищена.",
     "Тайная Доктрина и спутники конвертированы из старых .doc через LibreOffice: изредка теряется первая буква абзаца-буквицы. На поиск по корню и частоты не влияет, но при точном совпадении в начале абзаца возможен промах.",
-    "Русская морфология: искать по корню с усечением (терафим, наслое, насыщ), а не по точной словоформе."
+    "Русская морфология: искать по корню с усечением (терафим, наслое, насыщ), а не по точной словоформе.",
+    "Слой named_sources может быть на любом языке. Перед любым частотным подсчётом проверять поле lang и exclude_from_frequency."
   ]
 }
