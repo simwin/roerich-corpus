@@ -1,0 +1,31 @@
+term	regex	count
+effluve	effluv	106
+extériorisation	ext[ée]riorisa	61
+couche (слой)	couche	53
+envoûtement	envo[uû]t	25
+cire (воск)	\bcire	48
+statuette	statuett	7
+figurine	figurine	6
+photographie	photograph	23
+plaque (пластинка)	plaque	39
+gélatino-bromure	g[ée]latino	5
+épingle (булавка)	[ée]pingle	15
+piqûre/piquer	piq[uûa]	37
+cheveux (волосы)	cheveu	12
+ongle (ноготь)	ongle	11
+sang (кровь)	\bsang\b	58
+eau (вода)	\beau\b	94
+verre d'eau	verre d'eau	10
+rapport	rapport	81
+sympathie	sympathi	31
+poudre de sympathie	poudre de sympathie	11
+transplantation	transplantat	4
+hypnose	hypno	66
+suggestion	suggesti	32
+magnétiseur	magn[ée]tiseur	17
+aimant (магнит)	aimant	95
+Maxwell	Maxwell	18
+Paracelse	Paracels	9
+momie/mumie	momie|monie|mumie	18
+Norkievic-Iodko	Norki	1
+Chine	Chine|chinois	13
