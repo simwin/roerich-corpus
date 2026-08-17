@@ -21,11 +21,12 @@ MANIFEST — КОРПУС ДЛЯ АНАЛИЗА
 corpus/agni_corpus.jsonl                          7,585     776,136    10.8 MB
 corpus/de_rochas_1895.jsonl                          10      79,635   493.8 KB
 corpus/ei_letters_corpus.jsonl                    7,192   2,507,530    30.5 MB
+corpus/ei_letters_riga1940.jsonl                    233     271,399     3.4 MB
 corpus/glossary_corpus.jsonl                      2,780     134,851     2.0 MB
 corpus/grani_corpus.jsonl                        14,171   2,671,692    32.2 MB
 corpus/mahatma_corpus.jsonl                       1,433     384,602     4.7 MB
 corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
-ИТОГО                                            33,182   7,978,350    98.0 MB
+ИТОГО                                            33,415   8,249,749   101.4 MB
 
 --------------------------------------------------------------------------------
 СХЕМА ПОЛЕЙ (по первой записи каждого файла)
@@ -47,6 +48,12 @@ corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
     текст в поле: "text"
     ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_letters_corpus.jsonl
     пример: {"source": "Письма Е.И.Рерих", "edition": "т. 1. 1919-1933 гг. (МЦР)", "ref": "т. 1. 1919-1933 гг. (МЦР), стр. 247", "file": "1.247.htm", "text": "т. 1. 1919-1933 гг. (МЦР), стр. 247. // №100. А.М.Асееву. 28…", "words": 376, "chars": 2686}
+
+• corpus/ei_letters_riga1940.jsonl
+    поля: source, edition, vol, n, kind, section, date_raw, date, date_prec, ref, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_letters_riga1940.jsonl
+    пример: {"source": "Письма Е.И.Рерих (Рига 1940)", "edition": "т. 1. 1929–1935 (Рига 1940)", "vol": 1, "n": 0, "kind": "front_matter", "section": null, "date_raw": null, "date": null, "date_prec": null, "ref": "Рига 1940, т. 1, преамбула", "text": "Письма Елены Рерих\nТом I: 1929–1935\n\n© об авторских прав
 
 • corpus/glossary_corpus.jsonl
     поля: source, headword, file, text, words, chars

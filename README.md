@@ -2,7 +2,7 @@
 
 Корпус в формате **JSONL** для вычислительного анализа: частотности, тематический поиск, конкордансы, сравнение исторических слоёв.
 
-**Объём:** 33,182 записей, ≈7,978,350 слов, 98.0 MB.
+**Объём:** 33,415 записей, ≈8,249,749 слов, 101.4 MB.
 
 ## Быстрый старт
 
@@ -26,6 +26,7 @@ def load(path):
 | `corpus/agni_corpus.jsonl` | 7,585 | 776,136 | 10.8 MB |
 | `corpus/de_rochas_1895.jsonl` | 10 | 79,635 | 493.8 KB |
 | `corpus/ei_letters_corpus.jsonl` | 7,192 | 2,507,530 | 30.5 MB |
+| `corpus/ei_letters_riga1940.jsonl` | 233 | 271,399 | 3.4 MB |
 | `corpus/glossary_corpus.jsonl` | 2,780 | 134,851 | 2.0 MB |
 | `corpus/grani_corpus.jsonl` | 14,171 | 2,671,692 | 32.2 MB |
 | `corpus/mahatma_corpus.jsonl` | 1,433 | 384,602 | 4.7 MB |
@@ -36,6 +37,7 @@ def load(path):
 - `corpus/agni_corpus.jsonl` — поля: `source`, `book`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/de_rochas_1895.jsonl` — поля: `source`, `author`, `year`, `edition`, `lang`, `chapter_id`, `chapter_num`, `chapter_title`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/ei_letters_corpus.jsonl` — поля: `source`, `edition`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/ei_letters_riga1940.jsonl` — поля: `source`, `edition`, `vol`, `n`, `kind`, `section`, `date_raw`, `date`, `date_prec`, `ref`, `text`, `words`, `chars`; текст в `text`
 - `corpus/glossary_corpus.jsonl` — поля: `source`, `headword`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/grani_corpus.jsonl` — поля: `file`, `year`, `date`, `text`, `words`, `chars`; текст в `text`
 - `corpus/mahatma_corpus.jsonl` — поля: `source`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
