@@ -21,13 +21,21 @@ MANIFEST — КОРПУС ДЛЯ АНАЛИЗА
 corpus/agni_corpus.jsonl                          7,585     776,136    10.8 MB
 corpus/de_rochas_1895.jsonl                          10      79,635   493.8 KB
 corpus/ei_diaries_prolog.jsonl                    6,352   1,362,106    35.5 MB
+corpus/ei_diaries_ug_kosmsotr.jsonl               2,197     704,907    18.6 MB
+corpus/ei_diaries_ug_mashinopis.jsonl             2,721     975,029    25.2 MB
+corpus/ei_diaries_ug_ognopyt_r1.jsonl             2,250       2,250    19.6 MB
+corpus/ei_diaries_ug_ognopyt_r2v1.jsonl           1,054     442,333    11.5 MB
+corpus/ei_diaries_ug_ognopyt_r2v2.jsonl           1,379      11,041    12.7 MB
+corpus/ei_diaries_ug_otdelnye.jsonl               2,571     680,384    18.5 MB
+corpus/ei_diaries_ug_pervichnaya.jsonl            5,281       5,281    30.6 MB
+corpus/ei_diaries_ug_uchenie.jsonl                4,133   1,464,626    39.3 MB
 corpus/ei_letters_corpus.jsonl                    7,192   2,507,530    30.5 MB
 corpus/ei_letters_riga1940.jsonl                    233     271,399     3.4 MB
 corpus/glossary_corpus.jsonl                      2,780     134,851     2.0 MB
 corpus/grani_corpus.jsonl                        14,171   2,671,692    32.2 MB
 corpus/mahatma_corpus.jsonl                       1,433     384,602     4.7 MB
 corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
-ИТОГО                                            39,767   9,611,855   136.9 MB
+ИТОГО                                            61,353  13,897,706   312.9 MB
 
 --------------------------------------------------------------------------------
 СХЕМА ПОЛЕЙ (по первой записи каждого файла)
@@ -49,6 +57,54 @@ corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
     текст в поле: "text"
     ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_prolog.jsonl
     пример: {"source": "Записи Учения Живой Этики", "edition": "Прологъ, тт. 1–18 (Амхёрст/НЙ)", "line": "amherst_ny", "volume": 1, "date": "1920-03-24", "place": "Лондон", "tetrad_candidates": [1], "parallel_candidates": [], "tetrad_ambiguous": false, "text": "Я – твое благо!\nЯ – твоя улыбка!\nЯ – твоя радост
+
+• corpus/ei_diaries_ug_kosmsotr.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_kosmsotr.jsonl
+    пример: {"id": "ug-120-2-1", "topic_id": 120, "series": "Космическое сотрудничество (1940-1954)", "topic_title": "Тетрадь № 38 (1948 - 6.10.1950) [103]", "tetrad_no": "38", "gmr_no": 103, "author_no": null, "gmr_series": "Космическое сотрудничество", "pdf_url": "http://roerichsmuseum.ru/images/PDF/AV/EIR/EI
+
+• corpus/ei_diaries_ug_mashinopis.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_mashinopis.jsonl
+    пример: {"id": "ug-122-1-1", "topic_id": 122, "series": "Машинописные", "topic_title": "Тетрадь № 5м («Огненный опыт», 1940-е) [131]", "tetrad_no": "5м", "gmr_no": 131, "author_no": null, "gmr_series": null, "pdf_url": "http://roerichsmuseum.ru/images/PDF/AV/EIR/EIR-131.pdf", "form": "машинопись", "lang": "
+
+• corpus/ei_diaries_ug_ognopyt_r1.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "pdf_url"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_ognopyt_r1.jsonl
+    пример: {"id": "ug-292-1-2", "topic_id": 292, "series": "Огненный опыт, ред.1 (1924-1940)", "topic_title": "Тетрадь № 1 (28.03.1924 - 11.10.1924) [48]", "tetrad_no": "1", "gmr_no": 48, "author_no": "I", "gmr_series": "Огненный опыт", "pdf_url": "http://roerichsmuseum.ru/images/PDF/AV/EIR/EIR-048.pdf", "form
+
+• corpus/ei_diaries_ug_ognopyt_r2v1.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_ognopyt_r2v1.jsonl
+    пример: {"id": "ug-317-1-3", "topic_id": 317, "series": "Огненный опыт, ред.2 в.I (1924-1929)", "topic_title": "Тетрадь № 25 (27.01.1924 - 04.08.1924) [73]", "tetrad_no": "25", "gmr_no": 73, "author_no": "1", "gmr_series": "Огненный опыт", "pdf_url": "http://roerichsmuseum.ru/images/PDF/AV/EIR/EIR-073.pdf",
+
+• corpus/ei_diaries_ug_ognopyt_r2v2.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "topic_title"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_ognopyt_r2v2.jsonl
+    пример: {"id": "ug-627-1-3", "topic_id": 627, "series": "Огненный опыт, ред.2 в.II (1929-1933)", "topic_title": "Тетрадь № 191 («Беспредельность». Ч.I. 17.05.1929-­05.08.192…", "tetrad_no": "191", "gmr_no": 82, "author_no": "I", "gmr_series": "Огненный опыт", "pdf_url": "https://roerichsmuseum.website.yande
+
+• corpus/ei_diaries_ug_otdelnye.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_otdelnye.jsonl
+    пример: {"id": "ug-187-x-1", "topic_id": 187, "series": "Отдельные материалы (1920е-1950е)", "topic_title": "Тетрадь № 142 («Огненный опыт», 11.02.1952 - 25.02.1952) [17…", "tetrad_no": "142", "gmr_no": 178, "author_no": "№ I", "gmr_series": null, "pdf_url": "http://roerichsmuseum.ru/images/PDF/AV/EIR/EIR-1
+
+• corpus/ei_diaries_ug_pervichnaya.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "pdf_url"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_pervichnaya.jsonl
+    пример: {"id": "ug-188-x-1", "topic_id": 188, "series": "Первичная рукопись", "topic_title": "Тетрадь № 143 (11.02.1952 - 13.06.1952) [247]", "tetrad_no": "143", "gmr_no": 247, "author_no": "28", "gmr_series": null, "pdf_url": "http://roerichsmuseum.ru/images/PDF/AV/EIR/EIR-247.pdf", "form": "автограф", "la
+
+• corpus/ei_diaries_ug_uchenie.jsonl
+    поля: id, topic_id, series, topic_title, tetrad_no, gmr_no, author_no, gmr_series, pdf_url, form, lang, unit, n, n2, verso, text, text_search, date, date_basis, date_marks, date_scope, out_of_span, source_note, prod, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_diaries_ug_uchenie.jsonl
+    пример: {"id": "ug-511-1-3", "topic_id": 511, "series": "Учение (1920-1947)", "topic_title": "Тетрадь № I («Зов», 24.03.1920 - 24.02.1922) [1]", "tetrad_no": null, "gmr_no": null, "author_no": "1", "gmr_series": "Учение", "pdf_url": "https://roerichsmuseum.website.yandexcloud.net/EIR/EIR-001.p…", "form": "а
 
 • corpus/ei_letters_corpus.jsonl
     поля: source, edition, ref, file, text, words, chars
