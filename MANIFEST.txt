@@ -31,11 +31,12 @@ corpus/ei_diaries_ug_pervichnaya.jsonl            5,281       5,281    30.6 MB
 corpus/ei_diaries_ug_uchenie.jsonl                4,133   1,464,626    39.3 MB
 corpus/ei_letters_corpus.jsonl                    7,192   2,507,530    30.5 MB
 corpus/ei_letters_riga1940.jsonl                    233     271,399     3.4 MB
+corpus/five_years_theosophy_1885.jsonl               41     147,020   894.0 KB
 corpus/glossary_corpus.jsonl                      2,780     134,851     2.0 MB
 corpus/grani_corpus.jsonl                        14,171   2,671,692    32.2 MB
 corpus/mahatma_corpus.jsonl                       1,433     384,602     4.7 MB
 corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
-ИТОГО                                            61,353  13,897,706   312.9 MB
+ИТОГО                                            61,394  14,044,726   313.7 MB
 
 --------------------------------------------------------------------------------
 СХЕМА ПОЛЕЙ (по первой записи каждого файла)
@@ -117,6 +118,12 @@ corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
     текст в поле: "text"
     ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/ei_letters_riga1940.jsonl
     пример: {"source": "Письма Е.И.Рерих (Рига 1940)", "edition": "т. 1. 1929–1935 (Рига 1940)", "vol": 1, "n": 0, "kind": "front_matter", "section": null, "date_raw": null, "date": null, "date_prec": null, "ref": "Рига 1940, т. 1, преамбула", "text": "Письма Елены Рерих\nТом I: 1929–1935\n\n© об авторских прав
+
+• corpus/five_years_theosophy_1885.jsonl
+    поля: source, editor, year, orig_publication, edition, lang, section, article_num, article_title, author, author_basis, file, text, words, chars
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/five_years_theosophy_1885.jsonl
+    пример: {"source": "Five Years of Theosophy", "editor": "G. R. S. Mead", "year": 1885, "orig_publication": "The Theosophist (1879–1884)", "edition": "Project Gutenberg eBook #14378 (HTML, rev. 2024-10-28)", "lang": "en", "section": "Mystical", "article_num": 1, "article_title": "The \"Elixir of Life\"", "au
 
 • corpus/glossary_corpus.jsonl
     поля: source, headword, file, text, words, chars

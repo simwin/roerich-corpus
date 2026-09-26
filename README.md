@@ -2,7 +2,7 @@
 
 Корпус в формате **JSONL** для вычислительного анализа: частотности, тематический поиск, конкордансы, сравнение исторических слоёв.
 
-**Объём:** 61,353 записей, ≈13,897,706 слов, 312.9 MB.
+**Объём:** 61,394 записей, ≈14,044,726 слов, 313.7 MB.
 
 ## Быстрый старт
 
@@ -36,6 +36,7 @@ def load(path):
 | `corpus/ei_diaries_ug_uchenie.jsonl` | 4,133 | 1,464,626 | 39.3 MB |
 | `corpus/ei_letters_corpus.jsonl` | 7,192 | 2,507,530 | 30.5 MB |
 | `corpus/ei_letters_riga1940.jsonl` | 233 | 271,399 | 3.4 MB |
+| `corpus/five_years_theosophy_1885.jsonl` | 41 | 147,020 | 894.0 KB |
 | `corpus/glossary_corpus.jsonl` | 2,780 | 134,851 | 2.0 MB |
 | `corpus/grani_corpus.jsonl` | 14,171 | 2,671,692 | 32.2 MB |
 | `corpus/mahatma_corpus.jsonl` | 1,433 | 384,602 | 4.7 MB |
@@ -56,6 +57,7 @@ def load(path):
 - `corpus/ei_diaries_ug_uchenie.jsonl` — поля: `id`, `topic_id`, `series`, `topic_title`, `tetrad_no`, `gmr_no`, `author_no`, `gmr_series`, `pdf_url`, `form`, `lang`, `unit`, `n`, `n2`, `verso`, `text`, `text_search`, `date`, `date_basis`, `date_marks`, `date_scope`, `out_of_span`, `source_note`, `prod`, `words`, `chars`; текст в `text`
 - `corpus/ei_letters_corpus.jsonl` — поля: `source`, `edition`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/ei_letters_riga1940.jsonl` — поля: `source`, `edition`, `vol`, `n`, `kind`, `section`, `date_raw`, `date`, `date_prec`, `ref`, `text`, `words`, `chars`; текст в `text`
+- `corpus/five_years_theosophy_1885.jsonl` — поля: `source`, `editor`, `year`, `orig_publication`, `edition`, `lang`, `section`, `article_num`, `article_title`, `author`, `author_basis`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/glossary_corpus.jsonl` — поля: `source`, `headword`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/grani_corpus.jsonl` — поля: `file`, `year`, `date`, `text`, `words`, `chars`; текст в `text`
 - `corpus/mahatma_corpus.jsonl` — поля: `source`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
