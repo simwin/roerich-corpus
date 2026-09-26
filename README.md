@@ -2,7 +2,7 @@
 
 Корпус в формате **JSONL** для вычислительного анализа: частотности, тематический поиск, конкордансы, сравнение исторических слоёв.
 
-**Объём:** 61,394 записей, ≈14,044,726 слов, 313.7 MB.
+**Объём:** 61,444 записей, ≈14,198,762 слов, 314.6 MB.
 
 ## Быстрый старт
 
@@ -24,6 +24,7 @@ def load(path):
 | файл | записей | слов | размер |
 |---|---:|---:|---:|
 | `corpus/agni_corpus.jsonl` | 7,585 | 776,136 | 10.8 MB |
+| `corpus/autobiography_of_a_yogi_1946.jsonl` | 50 | 154,036 | 934.9 KB |
 | `corpus/de_rochas_1895.jsonl` | 10 | 79,635 | 493.8 KB |
 | `corpus/ei_diaries_prolog.jsonl` | 6,352 | 1,362,106 | 35.5 MB |
 | `corpus/ei_diaries_ug_kosmsotr.jsonl` | 2,197 | 704,907 | 18.6 MB |
@@ -45,6 +46,7 @@ def load(path):
 ## Схема
 
 - `corpus/agni_corpus.jsonl` — поля: `source`, `book`, `ref`, `file`, `text`, `words`, `chars`; текст в `text`
+- `corpus/autobiography_of_a_yogi_1946.jsonl` — поля: `source`, `author`, `year`, `edition`, `lang`, `unit`, `chapter_num`, `chapter_title`, `file`, `text`, `words`, `chars`, `record_id`, `ref`; текст в `text`
 - `corpus/de_rochas_1895.jsonl` — поля: `source`, `author`, `year`, `edition`, `lang`, `chapter_id`, `chapter_num`, `chapter_title`, `file`, `text`, `words`, `chars`; текст в `text`
 - `corpus/ei_diaries_prolog.jsonl` — поля: `source`, `edition`, `line`, `volume`, `date`, `place`, `tetrad_candidates`, `parallel_candidates`, `tetrad_ambiguous`, `text`, `words`, `chars`, `ref`, `seq`, `id`, `text_search`, `parallel_match`, `tetrad`, `tetrad_basis`; текст в `text`
 - `corpus/ei_diaries_ug_kosmsotr.jsonl` — поля: `id`, `topic_id`, `series`, `topic_title`, `tetrad_no`, `gmr_no`, `author_no`, `gmr_series`, `pdf_url`, `form`, `lang`, `unit`, `n`, `n2`, `verso`, `text`, `text_search`, `date`, `date_basis`, `date_marks`, `date_scope`, `out_of_span`, `source_note`, `prod`, `words`, `chars`; текст в `text`

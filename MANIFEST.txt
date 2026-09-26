@@ -19,6 +19,7 @@ MANIFEST — КОРПУС ДЛЯ АНАЛИЗА
 --------------------------------------------------------------------------------
 файл                                            записей        слов     размер
 corpus/agni_corpus.jsonl                          7,585     776,136    10.8 MB
+corpus/autobiography_of_a_yogi_1946.jsonl            50     154,036   934.9 KB
 corpus/de_rochas_1895.jsonl                          10      79,635   493.8 KB
 corpus/ei_diaries_prolog.jsonl                    6,352   1,362,106    35.5 MB
 corpus/ei_diaries_ug_kosmsotr.jsonl               2,197     704,907    18.6 MB
@@ -36,7 +37,7 @@ corpus/glossary_corpus.jsonl                      2,780     134,851     2.0 MB
 corpus/grani_corpus.jsonl                        14,171   2,671,692    32.2 MB
 corpus/mahatma_corpus.jsonl                       1,433     384,602     4.7 MB
 corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
-ИТОГО                                            61,394  14,044,726   313.7 MB
+ИТОГО                                            61,444  14,198,762   314.6 MB
 
 --------------------------------------------------------------------------------
 СХЕМА ПОЛЕЙ (по первой записи каждого файла)
@@ -46,6 +47,12 @@ corpus/sd_corpus.jsonl                               11   1,423,904    17.3 MB
     текст в поле: "text"
     ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/agni_corpus.jsonl
     пример: {"source": "Агни Йога", "book": "Листы Сада Мории. Зов", "ref": "Зов. 1920  Март 24", "file": "1920.03.24.htm", "text": "ЛОНДОН. 1920. Март 24\n\nЯ – твое благо.\n\nЯ – твоя улыбка.\n\nЯ …", "words": 92, "chars": 648}
+
+• corpus/autobiography_of_a_yogi_1946.jsonl
+    поля: source, author, year, edition, lang, unit, chapter_num, chapter_title, file, text, words, chars, record_id, ref
+    текст в поле: "text"
+    ссылка: https://raw.githubusercontent.com/simwin/roerich-corpus/main/corpus/autobiography_of_a_yogi_1946.jsonl
+    пример: {"source": "Autobiography of a Yogi", "author": "W. Y. Evans-Wentz", "year": 1946, "edition": "1st ed. 1946 (PG #7452)", "lang": "en", "unit": "preface", "chapter_num": 0, "chapter_title": "Preface (by W. Y. Evans-Wentz)", "file": "pg7452-images.html", "text": "By W. Y. EVANS-WENTZ, M.A., D.Litt., D
 
 • corpus/de_rochas_1895.jsonl
     поля: source, author, year, edition, lang, chapter_id, chapter_num, chapter_title, file, text, words, chars
